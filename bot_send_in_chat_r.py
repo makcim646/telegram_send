@@ -32,8 +32,9 @@ def main():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:45.0) Gecko/20100101 Firefox/45.0'
         }
+    proxy = {'104.16.24.3':'80'}
 
-    r = requests.get(url, headers = headers)
+    r = requests.get(url, headers = headers,  proxies=proxy)
 
     soup = BeautifulSoup(r.text, 'html5lib')
     table = soup.findChildren('b')
@@ -57,12 +58,9 @@ def main():
     'Сделано тестов {} \U0001F52C'.format(valumes['test']))
 
 
-    sleep(60*60*24)
 
 
 
 if __name__ == '__main__':
-    try:
-        main()
-    except:
-        pass
+    main()
+    sleep(60*60*24)
